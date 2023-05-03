@@ -21,6 +21,12 @@ class HomeController extends Controller
     public function checkLogin(Request $request)
     {
         // dd($request->all());
+
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required'
+        ]);
+
         $credentials = ([
             'email' => $request->username,
             'password' => $request->password
@@ -50,6 +56,14 @@ class HomeController extends Controller
 
     public function userList(){
         return view('admin/user/user-list');
+    }
+
+    public function editUserList(Request $request,$id){
+
+        $users = \App\Models\LoginModel::find($id);
+        // dd($user);
+
+        return view('admin/user/edit-user',compact('users'));
     }
 
     public function contact(){

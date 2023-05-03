@@ -12,7 +12,7 @@
             </header>
             @include('admin.includes.sidebar');
             <div id="main" class="row">
-            <div class="content-wrapper">
+            <div class="content-wrapper" style="width:100%">
                  <!-- Main content -->
                 <section class="content">
                   <div class="container-fluid">
@@ -29,6 +29,8 @@
                                   <th>Full Name</th>
                                   <th>Email</th>
                                   <th>Phone number</th>
+                                  <th>Edit</th>
+                                  <th>Delete</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -36,8 +38,10 @@
                                 <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->full_name }}</td>
-                                <td>{{ $user->email_id }}</td>
+                                <td>{{ $user->email }}</td>
                                 <td>{{ $user->phone_number }}</td>
+                                <td> <a href ='/edit-user/{{ $user->id }}' class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a></td>
+                                <td><a href ='delete/{{ $user->id }}' class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                                 @endforeach
                               </tbody>

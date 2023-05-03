@@ -29,47 +29,69 @@
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('admin_assets')}}/plugins/summernote/summernote-bs4.min.css">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition login-page">
 
-<div class="wrapper">
- <!-- Main content -->
- <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-12 col-12">
-          <div class="card">
-                <div class="card-header">Login Admin</div>
-                <form name="my-form" action="{{route('admin.logincheck')}}" method="post">
-                    @csrf 
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input name="username" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+<div class="login-box">
+  <div class="login-logo">
+   <b>Admin</b>LTE
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+
+      @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+     @endif
+
+      <form name="my-form" action="{{route('admin.logincheck')}}" method="post">
+         @csrf 
+        <div class="input-group mb-3">
+          <input name="username" type="email" class="form-control" placeholder="Email" >
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
             </div>
           </div>
-          <!-- ./col -->
         </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
+        <div class="input-group mb-3">
+          <input name="password" type="password" class="form-control" placeholder="Password" >
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
 
-
+      <p class="mb-1">
+        <a href="#">I forgot my password</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
 </div>
-<!-- /.content-wrapper -->
-
-<!-- ./wrapper -->
-
 
 <!-- jQuery -->
 <script src="{{asset('admin_assets')}}/plugins/jquery/jquery.min.js"></script>

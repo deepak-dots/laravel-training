@@ -8,10 +8,10 @@
         <div class="container">
             <header class="row">
                 @include('admin.includes.header')
-                @include('admin.includes.sidebar');
+                @include('admin.includes.sidebar')
             </header>
             <div id="main" class="row">
-                    @yield('content')
+                    @yield('content') 
             </div>
             <footer class="row">
                 @include('admin.includes.footer')
